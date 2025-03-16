@@ -21,6 +21,11 @@ def repo():
         link_files = {
             "//third_party/flatbuffers:build_defs.bzl": "build_defs.bzl",
         },
+
+        # HH: https://gitlab.alpinelinux.org/alpine/aports/-/blob/master/community/flatbuffers/locale-headers.patch
+
         patch_args = ["-p1"],
-        patches = [Label("https://gitlab.alpinelinux.org/alpine/aports/-/raw/master/community/flatbuffers/locale-headers.patch")],
+        patches = [Label("//third_party/flatbuffers:locale-headers.patch")],
+
+        # HH.
     )
