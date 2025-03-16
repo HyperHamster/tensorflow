@@ -107,7 +107,7 @@ def _initialize_third_party():
 # Toolchains & platforms required by Tensorflow to build.
 def _tf_toolchains():
     native.register_execution_platforms("@local_execution_config_platform//:platform")
-    # native.register_toolchains("@local_execution_config_python//:py_toolchain") # HH.
+    native.register_toolchains("@local_execution_config_python//:py_toolchain") # HH.
 
     # Loads all external repos to configure RBE builds.
     initialize_rbe_configs()
@@ -118,7 +118,7 @@ def _tf_toolchains():
     tensorrt_configure(name = "local_config_tensorrt")
     git_configure(name = "local_config_git")
     syslibs_configure(name = "local_config_syslibs")
-    # python_configure(name = "local_config_python") # HH.
+    python_configure(name = "local_config_python") # HH.
     rocm_configure(name = "local_config_rocm")
     sycl_configure(name = "local_config_sycl")
     remote_execution_configure(name = "local_config_remote_execution")
