@@ -25,7 +25,7 @@ load("//third_party/dlpack:workspace.bzl", dlpack = "repo")
 load("//third_party/ducc:workspace.bzl", ducc = "repo")
 load("//third_party/eigen3:workspace.bzl", eigen3 = "repo")
 load("//third_party/farmhash:workspace.bzl", farmhash = "repo")
-# load("//third_party/flatbuffers:workspace.bzl", flatbuffers = "repo") # HH.
+load("//third_party/flatbuffers:workspace.bzl", flatbuffers = "repo") # HH.
 
 # Import third party repository rules. See go/tfbr-thirdparty.
 load("//third_party/FP16:workspace.bzl", FP16 = "repo")
@@ -74,7 +74,7 @@ def _initialize_third_party():
     dlpack()
     eigen3()
     farmhash()
-    # flatbuffers() # HH.
+    flatbuffers() # HH.
     gemmlowp()
     hexagon_nn()
     highwayhash()
