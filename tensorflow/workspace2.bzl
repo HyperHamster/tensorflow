@@ -171,9 +171,11 @@ def _tf_repositories():
 
     git_repository(
         name = "com_github_nelhage_rules_boost",
-        commit = "1e3a69bf2d5cd10c34b74f066054cd335d033d71",
-        remote = "https://github.com/nelhage/rules_boost",
-        shallow_since = "1591047380 -0700",
+        # commit = "1e3a69bf2d5cd10c34b74f066054cd335d033d71",
+        commit = "c3edeeb93c47ee87d01fc96aec8e48ca9449d10c",
+        # remote = "https://github.com/nelhage/rules_boost",
+        remote = "https://github.com/nelhage/rules_boost.git",
+        # shallow_since = "1591047380 -0700",
     )
 
     # HH.
