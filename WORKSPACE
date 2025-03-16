@@ -71,6 +71,31 @@ load("@//tensorflow:workspace0.bzl", "tf_workspace0")
 
 tf_workspace0()
 
+# HH:
+
+load("@com_github_nelhage_rules_boost//:boost/boost.bzl", "boost_deps")
+
+boost_deps()
+
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+
+git_repository(
+    name = "emsdk",
+    remote = "https://github.com/emscripten-core/emsdk.git",
+    tag = "3.1.13",
+    strip_prefix = "bazel",
+)
+
+load("@emsdk//:deps.bzl", emsdk_deps = "deps")
+
+emsdk_deps()
+
+load("@emsdk//:emscripten_deps.bzl", emsdk_emscripten_deps = "emscripten_deps")
+
+emsdk_emscripten_deps(emscripten_version = "3.1.13")
+
+# HH.
+
 load(
     "@local_xla//third_party/py:python_wheel.bzl",
     "python_wheel_version_suffix_repository",

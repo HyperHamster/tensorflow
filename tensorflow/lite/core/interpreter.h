@@ -871,9 +871,11 @@ class Interpreter {
     return ModifyGraphWithDelegateImpl(owned_delegates_.back().get());
   }
 
+ public: // HH.
   // Overrides execution plan. ImplThis bounds checks indices sent in.
   // Note: Only used during initialization.
   TfLiteStatus SetExecutionPlan(const std::vector<int>& new_plan);
+ private: // HH.
 
   // Sets the profiler to all subgraphs.
   void SetSubgraphProfiler();

@@ -6,6 +6,7 @@ load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
 load("@bazel_skylib//lib:versions.bzl", "versions")
 
 # Import external repository rules.
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository") # HH.
 load("@bazel_tools//tools/build_defs/repo:java.bzl", "java_import_external")
 load("@rules_jvm_external//:defs.bzl", "maven_install")
 load("@tf_runtime//:dependencies.bzl", "tfrt_dependencies")
@@ -106,7 +107,7 @@ def _initialize_third_party():
 # Toolchains & platforms required by Tensorflow to build.
 def _tf_toolchains():
     native.register_execution_platforms("@local_execution_config_platform//:platform")
-    native.register_toolchains("@local_execution_config_python//:py_toolchain")
+    # native.register_toolchains("@local_execution_config_python//:py_toolchain") # HH.
 
     # Loads all external repos to configure RBE builds.
     initialize_rbe_configs()
@@ -117,7 +118,7 @@ def _tf_toolchains():
     tensorrt_configure(name = "local_config_tensorrt")
     git_configure(name = "local_config_git")
     syslibs_configure(name = "local_config_syslibs")
-    python_configure(name = "local_config_python")
+    # python_configure(name = "local_config_python") # HH.
     rocm_configure(name = "local_config_rocm")
     sycl_configure(name = "local_config_sycl")
     remote_execution_configure(name = "local_config_remote_execution")
@@ -165,6 +166,17 @@ def _tf_repositories():
         urls = tf_mirror_urls("https://github.com/google/XNNPACK/archive/24794834234a7926d2f553d34e84204c8ac99dfd.zip"),
     )
     # LINT.ThenChange(//tensorflow/lite/tools/cmake/modules/xnnpack.cmake)
+
+    # HH:
+
+    git_repository(
+        name = "com_github_nelhage_rules_boost",
+        commit = "1e3a69bf2d5cd10c34b74f066054cd335d033d71",
+        remote = "https://github.com/nelhage/rules_boost",
+        shallow_since = "1591047380 -0700",
+    )
+
+    # HH.
 
     # XNNPack dependency.
     tf_http_archive(
